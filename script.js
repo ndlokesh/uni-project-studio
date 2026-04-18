@@ -251,3 +251,188 @@ function handleFormSubmit(e) {
             btn.disabled = false;
         });
 }
+
+// --- NEW FEATURES ---
+
+// 1. Typed.js Hero
+document.addEventListener("DOMContentLoaded", function() {
+    if(document.getElementById('typed-text')) {
+        new Typed('#typed-text', {
+            strings: ['Into Orbit', 'To The Next Level', 'With Cutting-Edge Tech'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            cursorChar: '|',
+        });
+    }
+
+    // 2. 3D Tech Stack Sphere
+    if(document.getElementById('tech-sphere')) {
+        const texts = [
+            'React', 'Node.js', 'Next.js', 'MongoDB', 
+            'Python', 'Tailwind', 'Express', 'Firebase',
+            'SQL', 'Git', 'HTML5', 'CSS3', 'JS', 'C++'
+        ];
+        // Calculate appropriate radius based on screen size
+        const radius = window.innerWidth < 768 ? 120 : 160;
+        TagCloud('#tech-sphere', texts, {
+            radius: radius,
+            maxSpeed: 'normal',
+            initSpeed: 'normal',
+            direction: 135,
+            keep: true
+        });
+        document.querySelector('#tech-sphere').style.color = 'var(--neon-blue)';
+    }
+});
+
+// 3. Custom Cursor
+const cursor = document.getElementById('customCursor');
+if (cursor) {
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    
+    // Add hover effect for links and buttons
+    const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            cursor.style.borderWidth = '1px';
+            cursor.style.backgroundColor = 'rgba(255,42,109,0.1)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.borderWidth = '2px';
+            cursor.style.backgroundColor = 'transparent';
+        });
+    });
+}
+
+// 4. Project Estimator Logic
+const projectType = document.getElementById('projectType');
+const timeline = document.getElementById('timeline');
+const timelineVal = document.getElementById('timelineVal');
+const aiFeature = document.getElementById('aiFeature');
+const aiCheckIcon = document.getElementById('aiCheckIcon');
+const estPrice = document.getElementById('estPrice');
+const finalPriceInput = document.getElementById('finalPriceInput');
+
+const timelineLabels = {
+    1: 'ASAP (Rush +50%)',
+    2: 'Fast (1-2 Weeks +20%)',
+    3: 'Normal (2-4 Weeks)',
+    4: 'Relaxed (4+ Weeks)'
+};
+const timelineMultipliers = {
+    1: 1.5,
+    2: 1.2,
+    3: 1.0,
+    4: 1.0
+};
+
+function calculateEstimate() {
+    if(!projectType) return;
+    
+    let base = parseInt(projectType.value);
+    let timeMult = timelineMultipliers[timeline.value];
+    let aiCost = aiFeature.checked ? 15000 : 0;
+    
+    // Custom Checkbox UI
+    if(aiFeature.checked) {
+        aiCheckIcon.style.opacity = '1';
+    } else {
+        aiCheckIcon.style.opacity = '0';
+    }
+    
+    timelineVal.textContent = timelineLabels[timeline.value];
+    
+    // Base values in HTML: 150, 300, 400, 800, 1500
+    // We multiply by 10 to get a somewhat realistic INR base price
+    let total = Math.round((base * 10) * timeMult) + aiCost;
+    
+    estPrice.textContent = total.toLocaleString('en-IN');
+    finalPriceInput.value = total;
+}
+
+if(projectType) {
+    projectType.addEventListener('change', calculateEstimate);
+    timeline.addEventListener('input', calculateEstimate);
+    aiFeature.addEventListener('change', calculateEstimate);
+    calculateEstimate(); // initial call
+}
+
+// 5. Chatbot Logic
+const chatToggle = document.getElementById('chatbotToggle');
+const chatWindow = document.getElementById('chatbotWindow');
+const chatClose = document.getElementById('chatbotClose');
+const chatForm = document.getElementById('chatbotForm');
+const chatInput = document.getElementById('chatbotInput');
+const chatMessages = document.getElementById('chatbotMessages');
+
+if(chatToggle) {
+    chatToggle.addEventListener('click', () => {
+        chatWindow.classList.toggle('hidden');
+        if(!chatWindow.classList.contains('hidden')) {
+            chatInput.focus();
+        }
+    });
+    
+    chatClose.addEventListener('click', () => {
+        chatWindow.classList.add('hidden');
+    });
+    
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if(!msg) return;
+        
+        // Add user msg
+        addChatMsg(msg, 'user');
+        chatInput.value = '';
+        
+        // Bot respond
+        setTimeout(() => {
+            let botMsg = "That sounds interesting! Our payload team can handle it. Please use the estimator form to give us more details!";
+            const lowerMsg = msg.toLowerCase();
+            
+            if(lowerMsg.includes('python') || lowerMsg.includes('ai') || lowerMsg.includes('ml')) {
+                botMsg = "Yes! We specialize in Python and AI integrations. We can build intelligent systems for your project.";
+            } else if (lowerMsg.includes('cost') || lowerMsg.includes('price')) {
+                botMsg = "Prices start as low as ₹1,500 for mini student projects! Check our estimator below.";
+            } else if (lowerMsg.includes('portfolio') || lowerMsg.includes('resume')) {
+                botMsg = "We make the slickest portfolios on the web. They are guaranteed to impress recruiters.";
+            } else if (lowerMsg.includes('hello') || lowerMsg.includes('hi')) {
+                botMsg = "Hello again! Ready for launch?";
+            }
+            
+            addChatMsg(botMsg, 'bot');
+        }, 800);
+    });
+    
+    function addChatMsg(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = sender === 'user' ? 'flex gap-2 ml-6 items-end justify-end' : 'flex gap-2 mr-6 items-end';
+        
+        if (sender === 'user') {
+            msgDiv.innerHTML = `
+                <div class="bg-brand-purple/20 border border-brand-purple/30 rounded-2xl rounded-br-sm p-3 text-white font-light leading-relaxed">
+                    ${text}
+                </div>
+                <div class="w-6 h-6 rounded-full bg-brand-purple/20 flex-shrink-0 flex items-center justify-center text-brand-purple text-[10px]"><i class="fa-solid fa-user"></i></div>
+            `;
+        } else {
+            msgDiv.innerHTML = `
+                <div class="w-6 h-6 rounded-full bg-brand-blue/20 flex-shrink-0 flex items-center justify-center text-brand-blue text-[10px]"><i class="fa-solid fa-robot"></i></div>
+                <div class="bg-white/5 border border-white/5 rounded-2xl rounded-bl-sm p-3 text-gray-300 font-light leading-relaxed">
+                    ${text}
+                </div>
+            `;
+        }
+        
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
