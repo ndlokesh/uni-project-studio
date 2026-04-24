@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Book a Session | Portfolio</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head>
+<body>
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+<nav id="navbar"><div class="nav-inner container"><a href="index.html" class="nav-logo">Dev<span>.</span></a><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="estimator.html">Estimator</a></li><li><a href="booking.html">Book</a></li><li><a href="contact.html">Contact</a></li></ul><div class="nav-actions"><button class="theme-btn" id="themeBtn">??</button><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><a href="contact.html" class="btn btn-outline btn-sm">Contact</a></div></div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="estimator.html">Estimator</a><a href="booking.html">Book</a><a href="contact.html">Contact</a></div>
+<div class="page-hero"><div class="container"><div class="section-label">Free 30-min Call</div><h1>Book a <span class="grad-text">Strategy Session</span></h1><p>Pick a date and time that works for you. I'll review your project and give honest advice — no sales pressure.</p></div></div>
+<section><div class="container"><div class="booking-wrap">
+<div>
+<div class="calendar-wrap">
+<div class="cal-header">
+<button class="cal-nav" id="prevBtn">&#8249;</button>
+<div class="cal-month" id="calMonth">April 2026</div>
+<button class="cal-nav" id="nextBtn">&#8250;</button>
+</div>
+<div class="cal-days-label"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div class="cal-grid" id="calGrid"></div>
+<div class="availability-legend">
+<div class="legend-item"><div class="legend-dot available"></div>Available</div>
+<div class="legend-item"><div class="legend-dot busy"></div>Busy</div>
+<div class="legend-item"><div class="legend-dot selected"></div>Selected</div>
+</div>
+</div>
+<div class="time-slots" id="timeSlotsWrap" style="display:none">
+<h4 style="margin-bottom:4px">Select Time <span style="color:var(--text3);font-size:.8rem">(IST)</span></h4>
+<div class="time-slots-grid" id="slotsGrid"></div>
+</div>
+</div>
+<div class="booking-form-panel">
+<h3 style="margin-bottom:20px">?? Your Details</h3>
+<div class="booking-summary" id="bookSummary">
+<div style="font-size:.8rem;color:var(--text3);margin-bottom:8px">?? Booking Summary</div>
+<div class="sum-row"><span class="key">Date</span><span class="val" id="sumDate">Not selected</span></div>
+<div class="sum-row"><span class="key">Time</span><span class="val" id="sumTime">Not selected</span></div>
+<div class="sum-row"><span class="key">Duration</span><span class="val">30 minutes (Free)</span></div>
+<div class="sum-row"><span class="key">Format</span><span class="val">Google Meet / Zoom</span></div>
+</div>
+<div class="form-group"><label>Full Name *</label><input type="text" id="bkName" placeholder="John Doe" required></div>
+<div class="form-group"><label>Email *</label><input type="email" id="bkEmail" placeholder="john@example.com" required></div>
+<div class="form-group"><label>WhatsApp (optional)</label><input type="tel" id="bkPhone" placeholder="+91 98765 43210"></div>
+<div class="form-group"><label>Project Type</label><select id="bkType"><option>Landing Page</option><option>Business Website</option><option>E-Commerce</option><option>SaaS / Web App</option><option>Mobile App</option><option>Just exploring</option></select></div>
+<div class="form-group"><label>Brief Description</label><textarea rows="3" id="bkDesc" placeholder="Tell me a bit about your idea..."></textarea></div>
+<button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitBooking()"><i class="fa-solid fa-calendar-check"></i> Confirm Booking</button>
+<div id="bookSuccess" style="display:none;margin-top:20px;padding:20px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:12px;text-align:center">
+<div style="font-size:2rem">??</div>
+<h4 style="color:#22c55e;margin:8px 0">Booking Confirmed!</h4>
+<p style="font-size:.85rem">Check your email for the meeting link. I look forward to speaking with you!</p>
+</div>
+</div>
+</div></div></section>
+<footer><div class="container"><div class="footer-inner"><a href="index.html" class="nav-logo">Dev<span class="grad-text">.</span></a><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="estimator.html">Estimator</a><a href="contact.html">Contact</a></div></div><div class="footer-copy">© 2026 ND.Lokesh</div></div></footer>
+<button class="whatsapp-fab" onclick="window.open('https://wa.me/919999999999','_blank')">??</button>
+<script src="app.js"></script>
+<script>
+const BUSY=[3,7,12,15,20,25];
+const SLOTS=['09:00 AM','09:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','02:00 PM','02:30 PM','03:00 PM','03:30 PM','04:00 PM','04:30 PM'];
+const BOOKED=['10:00 AM','02:30 PM'];
+let cur=new Date(),selDay=null,selTime=null;
+function renderCal(){
+  const y=cur.getFullYear(),m=cur.getMonth();
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('calMonth').textContent=months[m]+' '+y;
+  const grid=document.getElementById('calGrid');grid.innerHTML='';
+  const first=new Date(y,m,1).getDay();
+  const days=new Date(y,m+1,0).getDate();
+  const today=new Date();
+  for(let i=0;i<first;i++){const d=document.createElement('div');d.className='cal-day empty';grid.appendChild(d);}
+  for(let d=1;d<=days;d++){
+    const el=document.createElement('div');el.textContent=d;
+    const date=new Date(y,m,d);
+    const isPast=date<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    const isWeekend=[0,6].includes(date.getDay());
+    const isBusy=BUSY.includes(d);
+    el.className='cal-day'+(isPast||isWeekend?' past':(isBusy?' busy':' available'));
+    if(selDay===d&&!isPast&&!isWeekend&&!isBusy)el.classList.add('selected');
+    if(d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear())el.classList.add('today');
+    if(!isPast&&!isWeekend&&!isBusy){el.addEventListener('click',()=>{selDay=d;selTime=null;renderCal();showSlots(y,m,d);});}
+    grid.appendChild(el);
+  }
+}
+function showSlots(y,m,d){
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('sumDate').textContent=months[m]+' '+d+', '+y;
+  document.getElementById('sumTime').textContent='Not selected';
+  const wrap=document.getElementById('timeSlotsWrap');wrap.style.display='block';
+  const sg=document.getElementById('slotsGrid');sg.innerHTML='';
+  SLOTS.forEach(s=>{
+    const el=document.createElement('div');el.textContent=s;
+    el.className='time-slot'+(BOOKED.includes(s)?' booked':'');
+    if(!BOOKED.includes(s)){el.addEventListener('click',()=>{
+      document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));
+      el.classList.add('selected');selTime=s;
+      document.getElementById('sumTime').textContent=s;
+    });}
+    sg.appendChild(el);
+  });
+}
+document.getElementById('prevBtn').addEventListener('click',()=>{cur.setMonth(cur.getMonth()-1);renderCal();});
+document.getElementById('nextBtn').addEventListener('click',()=>{cur.setMonth(cur.getMonth()+1);renderCal();});
+function submitBooking(){
+  const n=document.getElementById('bkName').value;
+  const e=document.getElementById('bkEmail').value;
+  if(!n||!e){alert('Please fill your name and email.');return;}
+  if(!selDay){alert('Please select a date.');return;}
+  if(!selTime){alert('Please select a time slot.');return;}
+  document.getElementById('bookSuccess').style.display='block';
+  document.querySelector('.booking-form-panel button').style.display='none';
+}
+renderCal();
+</script>
+</body></html>

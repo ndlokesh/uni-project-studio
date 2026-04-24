@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Uni Project Studio</title>
+    <meta name="description" content="Meet ND.Lokesh (Founder) and N.Sri Siri (Co-Founder) of Uni Project Studio — the mission commanders behind Hyderabad's next-gen web studio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { dark: '#050B14', blue: '#FF2A6D', purple: '#FFC600' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { scroll-behavior: smooth; }
+
+        body { background-color: #050B14; }
+
+        .neon-line-blue { box-shadow: 0 0 15px rgba(255,42,109,0.5); }
+        .neon-line-gold { box-shadow: 0 0 15px rgba(255,198,0,0.5); }
+
+        .founder-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+        .founder-card:hover { transform: translateY(-8px); }
+        .founder-card.blue:hover { border-color: rgba(255,42,109,0.4); }
+        .founder-card.gold:hover { border-color: rgba(255,198,0,0.4); }
+
+        .photo-ring-blue {
+            border: 2px solid rgba(255,42,109,0.4);
+            box-shadow: 0 0 30px rgba(255,42,109,0.15), inset 0 0 20px rgba(255,42,109,0.05);
+        }
+        .photo-ring-gold {
+            border: 2px solid rgba(255,198,0,0.4);
+            box-shadow: 0 0 30px rgba(255,198,0,0.15), inset 0 0 20px rgba(255,198,0,0.05);
+        }
+
+        .tag-blue {
+            background: rgba(255,42,109,0.1);
+            border: 1px solid rgba(255,42,109,0.3);
+            color: #FF2A6D;
+        }
+        .tag-gold {
+            background: rgba(255,198,0,0.1);
+            border: 1px solid rgba(255,198,0,0.3);
+            color: #FFC600;
+        }
+
+        .stat-divider { border-color: rgba(255,255,255,0.07); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 20h40M20 0v40' stroke='rgba(255,255,255,0.03)' fill='none'/%3E%3C/svg%3E");
+        }
+
+        .social-btn { transition: all 0.3s ease; }
+        .social-btn:hover { transform: translateY(-3px); }
+
+        @keyframes pulse-blue { 0%,100%{box-shadow:0 0 0 0 rgba(255,42,109,0.4)} 50%{box-shadow:0 0 0 12px rgba(255,42,109,0)} }
+        @keyframes pulse-gold { 0%,100%{box-shadow:0 0 0 0 rgba(255,198,0,0.4)} 50%{box-shadow:0 0 0 12px rgba(255,198,0,0)} }
+        .badge-blue { animation: pulse-blue 2.5s infinite; }
+        .badge-gold { animation: pulse-gold 2.5s infinite; }
+
+        .quote-block { border-left: 3px solid; }
+        .quote-blue { border-color: #FF2A6D; }
+        .quote-gold { border-color: #FFC600; }
+    </style>
+</head>
+<body class="text-white font-sans antialiased overflow-x-hidden bg-grid">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-brand-dark/80 border-b border-brand-blue/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="logo.png" alt="Uni Project Studio" class="h-10 w-auto object-contain rounded-full border-2 border-brand-blue" onerror="this.outerHTML='<div class=\'w-10 h-10 rounded-full border-2 border-brand-blue flex items-center justify-center\'><i class=\'fa-solid fa-rocket text-brand-blue\'></i></div>'">
+                    <span class="font-display font-bold text-xl tracking-wider">UNI PROJECT</span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#home" class="text-gray-300 hover:text-brand-blue font-medium transition-colors">Home</a>
+                    <a href="index.html#services" class="text-gray-300 hover:text-brand-blue font-medium transition-colors">Services</a>
+                    <a href="index.html#portfolio" class="text-gray-300 hover:text-brand-blue font-medium transition-colors">Portfolio</a>
+                    <a href="team.html" class="text-brand-blue font-bold transition-colors">Our Team</a>
+                    <a href="index.html#contact" class="px-6 py-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple text-white font-bold hover:shadow-lg transition-all text-sm tracking-wider">Contact</a>
+                </div>
+                <button class="md:hidden text-white" id="menuBtn"><i class="fa-solid fa-bars text-2xl"></i></button>
+            </div>
+        </div>
+        <!-- Mobile -->
+        <div class="md:hidden hidden bg-brand-dark/95 border-b border-white/10 absolute w-full" id="mobileMenu">
+            <div class="px-4 py-4 space-y-2 text-center">
+                <a href="index.html#home" class="block py-2 text-gray-300 hover:text-brand-blue">Home</a>
+                <a href="index.html#services" class="block py-2 text-gray-300 hover:text-brand-blue">Services</a>
+                <a href="index.html#portfolio" class="block py-2 text-gray-300 hover:text-brand-blue">Portfolio</a>
+                <a href="team.html" class="block py-2 text-brand-blue font-bold">Our Team</a>
+                <a href="index.html#contact" class="block py-2 text-brand-blue font-bold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="pt-40 pb-20 relative overflow-hidden">
+        <div class="absolute top-20 left-1/4 w-72 h-72 bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center reveal" id="hero-text">
+            <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 text-brand-blue font-display text-xs tracking-widest uppercase">
+                <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse inline-block"></span>
+                The Dream Team
+            </div>
+            <h1 class="text-5xl md:text-6xl font-display font-black mb-5 leading-tight">
+                The Minds Behind<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">Uni Project Studio</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+                Four passionate builders from Hyderabad, united by a single vision — to give every student and startup the launchpad their idea deserves.
+            </p>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-brand-blue/40 to-transparent"></div>
+
+    <!-- Founder Cards -->
+    <section class="py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+            <!-- Founder: ND.Lokesh -->
+            <div class="founder-card blue rounded-3xl p-8 md:p-12 reveal" id="founder-card">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <!-- Photo -->
+                    <div class="flex-shrink-0 flex flex-col items-center gap-4">
+                        <div class="photo-ring-blue w-56 h-56 rounded-2xl overflow-hidden">
+                            <img src="founder.png" alt="ND.Lokesh - Founder" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="flex items-center gap-2 badge-blue w-fit px-4 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/30">
+                            <i class="fa-solid fa-rocket text-brand-blue text-xs"></i>
+                            <span class="text-brand-blue font-display font-bold text-xs tracking-widest uppercase">Founder</span>
+                        </div>
+                        <!-- Social -->
+                        <div class="flex gap-3 mt-1">
+                            <a href="#" aria-label="LinkedIn" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue/50">
+                                <i class="fa-brands fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" aria-label="GitHub" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/50">
+                                <i class="fa-brands fa-github text-sm"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue/50">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 text-center lg:text-left">
+                        <h2 class="text-4xl font-display font-black text-white mb-1">ND.Lokesh</h2>
+                        <p class="text-brand-blue font-display text-sm tracking-widest uppercase mb-6">Founder & Lead Developer</p>
+
+                        <blockquote class="quote-block quote-blue pl-5 mb-6 italic text-gray-300 text-lg font-light leading-relaxed">
+                            "Every idea deserves a launchpad. We build the rocket."
+                        </blockquote>
+
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            ND.Lokesh is the visionary force behind Uni Project Studio. A full-stack developer and entrepreneur based in Hyderabad, he founded the studio with a mission to make professional-grade web development accessible to students and startups alike. He specialises in React, Node.js, Next.js, and AI integrations.
+                        </p>
+
+                        <!-- Skills -->
+                        <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Full-Stack Dev</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">React & Next.js</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Node.js</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">AI Integration</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">UI/UX Design</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Startup Strategy</span>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-4 border-t stat-divider pt-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-display font-black text-brand-blue">50+</div>
+                                <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Projects</div>
+                            </div>
+                            <div class="text-center border-x stat-divider">
+                                <div class="text-2xl font-display font-black text-brand-blue">2+</div>
+                                <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Years Exp.</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-display font-black text-brand-blue">100%</div>
+                                <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Co-Founder: N.Sri Siri -->
+            <div class="founder-card gold rounded-3xl p-8 md:p-12 reveal" id="cofounder-card">
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                    <!-- Photo -->
+                    <div class="flex-shrink-0 flex flex-col items-center gap-4">
+                        <div class="photo-ring-gold w-56 h-56 rounded-2xl overflow-hidden">
+                            <img src="cofounder.png" alt="N.Sri Siri - Co-Founder" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="flex items-center gap-2 badge-gold w-fit px-4 py-1.5 rounded-full bg-brand-purple/10 border border-brand-purple/30">
+                            <i class="fa-solid fa-star text-brand-purple text-xs"></i>
+                            <span class="text-brand-purple font-display font-bold text-xs tracking-widest uppercase">Co-Founder</span>
+                        </div>
+                        <!-- Social -->
+                        <div class="flex gap-3 mt-1">
+                            <a href="#" aria-label="LinkedIn" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-purple hover:border-brand-purple/50">
+                                <i class="fa-brands fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" aria-label="GitHub" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/50">
+                                <i class="fa-brands fa-github text-sm"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-purple hover:border-brand-purple/50">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 text-center lg:text-left">
+                        <h2 class="text-4xl font-display font-black text-white mb-1">N.Sri Siri</h2>
+                        <p class="text-brand-purple font-display text-sm tracking-widest uppercase mb-6">Co-Founder & Operations Lead</p>
+
+                        <blockquote class="quote-block quote-gold pl-5 mb-6 italic text-gray-300 text-lg font-light leading-relaxed">
+                            "Great products are built by great teams — and great teams are built on trust."
+                        </blockquote>
+
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            N.Sri Siri is the operational backbone of Uni Project Studio. She ensures every client engagement runs smoothly — from initial brief to final delivery. Her attention to detail, client communication skills, and passion for creative problem-solving make her an indispensable force behind the studio's growth.
+                        </p>
+
+                        <!-- Skills -->
+                        <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Operations</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Client Relations</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Project Management</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">UI Design</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Research</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Brand Strategy</span>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-4 border-t stat-divider pt-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-display font-black text-brand-purple">50+</div>
+                                <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Clients</div>
+                            </div>
+                            <div class="text-center border-x stat-divider">
+                                <div class="text-2xl font-display font-black text-brand-purple">2+</div>
+                                <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Years Exp.</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-display font-black text-brand-purple">5★</div>
+                                <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-brand-purple/40 to-transparent"></div>
+
+    <!-- Co-Partners Section -->
+    <section class="py-24" style="background: rgba(255,198,0,0.02);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-brand-purple/30 bg-brand-purple/10 text-brand-purple font-display text-xs tracking-widest uppercase">
+                    <span class="w-2 h-2 rounded-full bg-brand-purple animate-pulse inline-block"></span>
+                    Co-Partners
+                </div>
+                <h2 class="text-4xl md:text-5xl font-display font-black text-white mb-4">Meet Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-blue">Co-Partners</span></h2>
+                <p class="text-gray-400 max-w-xl mx-auto font-light">The driving force behind our day-to-day operations, client success, and creative execution.</p>
+            </div>
+
+            <!-- Partner Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                <!-- P.Sumanth -->
+                <div class="founder-card rounded-3xl p-8 reveal" style="border-color: rgba(255,198,0,0.15);" onmouseenter="this.style.borderColor='rgba(255,198,0,0.4)'" onmouseleave="this.style.borderColor='rgba(255,198,0,0.15)'">
+                    <div class="flex flex-col items-center text-center gap-5">
+                        <!-- Photo -->
+                        <div class="photo-ring-gold w-44 h-44 rounded-2xl overflow-hidden">
+                            <img src="sumanth.png" alt="P.Sumanth - Co-Partner" class="w-full h-full object-cover object-top">
+                        </div>
+                        <!-- Badge -->
+                        <div class="flex items-center gap-2 badge-gold px-4 py-1.5 rounded-full bg-brand-purple/10 border border-brand-purple/30">
+                            <i class="fa-solid fa-handshake text-brand-purple text-xs"></i>
+                            <span class="text-brand-purple font-display font-bold text-xs tracking-widest uppercase">Co-Partner</span>
+                        </div>
+                        <!-- Name & Role -->
+                        <div>
+                            <h2 class="text-3xl font-display font-black text-white mb-1">P.Sumanth</h2>
+                            <p class="text-brand-purple font-display text-sm tracking-widest uppercase">Co-Partner & Business Development</p>
+                        </div>
+                        <!-- Quote -->
+                        <blockquote class="quote-block quote-gold pl-5 text-left italic text-gray-300 font-light leading-relaxed">
+                            "Building bridges between great ideas and real-world success."
+                        </blockquote>
+                        <!-- Bio -->
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            P.Sumanth plays a key role in business development and client acquisition at Uni Project Studio. With a sharp eye for opportunities and a passion for connecting people, he ensures the studio continues to grow and deliver value to every client.
+                        </p>
+                        <!-- Skills -->
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Business Dev</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Client Acquisition</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Marketing</span>
+                            <span class="tag-gold px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Networking</span>
+                        </div>
+                        <!-- Socials -->
+                        <div class="flex gap-3">
+                            <a href="#" aria-label="LinkedIn" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-purple hover:border-brand-purple/50">
+                                <i class="fa-brands fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-purple hover:border-brand-purple/50">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- K.Shyam -->
+                <div class="founder-card rounded-3xl p-8 reveal" style="border-color: rgba(255,42,109,0.15);" onmouseenter="this.style.borderColor='rgba(255,42,109,0.4)'" onmouseleave="this.style.borderColor='rgba(255,42,109,0.15)'">
+                    <div class="flex flex-col items-center text-center gap-5">
+                        <!-- Photo -->
+                        <div class="photo-ring-blue w-44 h-44 rounded-2xl overflow-hidden">
+                            <img src="shyam.png" alt="K.Shyam - Co-Partner" class="w-full h-full object-cover object-top">
+                        </div>
+                        <!-- Badge -->
+                        <div class="flex items-center gap-2 badge-blue px-4 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/30">
+                            <i class="fa-solid fa-handshake text-brand-blue text-xs"></i>
+                            <span class="text-brand-blue font-display font-bold text-xs tracking-widest uppercase">Co-Partner</span>
+                        </div>
+                        <!-- Name & Role -->
+                        <div>
+                            <h2 class="text-3xl font-display font-black text-white mb-1">K.Shyam</h2>
+                            <p class="text-brand-blue font-display text-sm tracking-widest uppercase">Co-Partner & Technical Strategy</p>
+                        </div>
+                        <!-- Quote -->
+                        <blockquote class="quote-block quote-blue pl-5 text-left italic text-gray-300 font-light leading-relaxed">
+                            "Technology is not just code — it's the story of what's possible."
+                        </blockquote>
+                        <!-- Bio -->
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            K.Shyam brings technical vision and strategic thinking to Uni Project Studio. He bridges the gap between client requirements and technical execution, ensuring every project is planned and delivered with precision, quality, and innovation.
+                        </p>
+                        <!-- Skills -->
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Tech Strategy</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Quality Assurance</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Planning</span>
+                            <span class="tag-blue px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Innovation</span>
+                        </div>
+                        <!-- Socials -->
+                        <div class="flex gap-3">
+                            <a href="#" aria-label="LinkedIn" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue/50">
+                                <i class="fa-brands fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue/50">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="py-16 relative">
+        <div class="max-w-3xl mx-auto px-4 text-center reveal" id="cta-section">
+            <h2 class="text-3xl md:text-4xl font-display font-black mb-4">Ready to <span class="text-brand-blue">Launch</span> Your Project?</h2>
+            <p class="text-gray-400 mb-8 font-light">Get in touch with our team and let's build something extraordinary together.</p>
+            <a href="index.html#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple text-white font-display font-bold hover:shadow-[0_0_30px_rgba(255,42,109,0.5)] transition-all duration-300 transform hover:-translate-y-1">
+                Start a Project <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 text-center">
+        <p class="text-gray-600 text-sm">© 2026 Uni Project Studio. All rights reserved.</p>
+        <a href="index.html" class="text-brand-blue text-sm hover:underline mt-2 inline-block">← Back to Home</a>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

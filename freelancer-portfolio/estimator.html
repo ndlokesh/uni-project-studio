@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project Estimator | Portfolio</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head>
+<body>
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+<nav id="navbar"><div class="nav-inner container"><a href="index.html" class="nav-logo">Dev<span>.</span></a><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="estimator.html">Estimator</a></li><li><a href="booking.html">Book</a></li><li><a href="contact.html">Contact</a></li></ul><div class="nav-actions"><button class="theme-btn" id="themeBtn">??</button><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><a href="booking.html" class="btn btn-primary btn-sm">Hire Me</a></div></div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="estimator.html">Estimator</a><a href="booking.html">Book</a><a href="contact.html">Contact</a></div>
+<div class="page-hero"><div class="container"><div class="section-label">Free Tool</div><h1>AI Project <span class="grad-text">Estimator</span></h1><p>Answer a few questions and get an instant cost & timeline estimate for your project.</p></div></div>
+<section><div class="container"><div class="estimator-wrap">
+<div>
+<div class="step-indicator">
+<div class="step active" id="si0"><div class="step-circle">1</div><div class="step-label-text">Type</div></div>
+<div class="step-line" id="sl0"></div>
+<div class="step active" id="si1"><div class="step-circle">2</div><div class="step-label-text">Features</div></div>
+<div class="step-line" id="sl1"></div>
+<div class="step" id="si2"><div class="step-circle">3</div><div class="step-label-text">Timeline</div></div>
+<div class="step-line" id="sl2"></div>
+<div class="step" id="si3"><div class="step-circle">4</div><div class="step-label-text">Details</div></div>
+</div>
+<div class="estimator-panel active" id="panel0">
+<h3 style="margin-bottom:8px">What type of project?</h3>
+<p style="font-size:.88rem;margin-bottom:24px">Select the category that best fits your idea.</p>
+<div class="option-grid">
+<div class="option-card" onclick="selectType(this,8999,'5 days')" data-v="8999"><div class="opt-icon">??</div><div class="opt-label">Landing Page</div><div class="opt-price">from ?8,999</div></div>
+<div class="option-card" onclick="selectType(this,18999,'10 days')" data-v="18999"><div class="opt-icon">??</div><div class="opt-label">Business Site</div><div class="opt-price">from ?18,999</div></div>
+<div class="option-card" onclick="selectType(this,29999,'14 days')" data-v="29999"><div class="opt-icon">??</div><div class="opt-label">E-Commerce</div><div class="opt-price">from ?29,999</div></div>
+<div class="option-card" onclick="selectType(this,49999,'21 days')" data-v="49999"><div class="opt-icon">??</div><div class="opt-label">SaaS Platform</div><div class="opt-price">from ?49,999</div></div>
+<div class="option-card" onclick="selectType(this,24999,'14 days')" data-v="24999"><div class="opt-icon">??</div><div class="opt-label">Mobile App</div><div class="opt-price">from ?24,999</div></div>
+<div class="option-card" onclick="selectType(this,15999,'10 days')" data-v="15999"><div class="opt-icon">???</div><div class="opt-label">Portfolio</div><div class="opt-price">from ?15,999</div></div>
+</div>
+<button class="btn btn-primary" style="margin-top:12px" onclick="nextPanel(1)">Next ?</button>
+</div>
+<div class="estimator-panel" id="panel1">
+<h3 style="margin-bottom:8px">Which features do you need?</h3>
+<p style="font-size:.88rem;margin-bottom:24px">Select all that apply. Each feature adds to the estimate.</p>
+<div class="feature-checkboxes" id="featureList">
+<label class="feature-check" onclick="toggleFeature(this,5000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">User Authentication</div><div class="check-price">+?5,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,8000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">Payment Gateway</div><div class="check-price">+?8,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,6000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">CMS / Admin Panel</div><div class="check-price">+?6,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,15000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">AI Integration</div><div class="check-price">+?15,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,4000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">Blog / Articles</div><div class="check-price">+?4,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,7000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">API Integration</div><div class="check-price">+?7,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,5000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">Live Chat</div><div class="check-price">+?5,000</div></div></label>
+<label class="feature-check" onclick="toggleFeature(this,3000)"><input type="checkbox"><div class="check-box">?</div><div><div class="check-label">Multi-language</div><div class="check-price">+?3,000</div></div></label>
+</div>
+<div style="display:flex;gap:12px;margin-top:24px">
+<button class="btn btn-outline" onclick="nextPanel(0)">? Back</button>
+<button class="btn btn-primary" onclick="nextPanel(2)">Next ?</button>
+</div>
+</div>
+<div class="estimator-panel" id="panel2">
+<h3 style="margin-bottom:8px">What is your timeline?</h3>
+<p style="font-size:.88rem;margin-bottom:24px">Faster delivery may require a rush fee.</p>
+<div class="range-wrap">
+<label>Timeline <span id="tlVal">Standard (2-3 weeks)</span></label>
+<input type="range" min="1" max="4" value="2" id="tlRange" oninput="updateTimeline(this.value)">
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;font-size:.72rem;color:var(--text3);margin-top:8px">
+<span>Rush<br>+50%</span><span>Standard</span><span>Relaxed<br>-10%</span><span>Flexible<br>-15%</span>
+</div>
+<div style="display:flex;gap:12px;margin-top:32px">
+<button class="btn btn-outline" onclick="nextPanel(1)">? Back</button>
+<button class="btn btn-primary" onclick="nextPanel(3)">Next ?</button>
+</div>
+</div>
+<div class="estimator-panel" id="panel3">
+<h3 style="margin-bottom:8px">Almost done!</h3>
+<p style="font-size:.88rem;margin-bottom:24px">Tell us a bit more so we can send a detailed proposal.</p>
+<div class="form-group"><label>Your Name</label><input type="text" placeholder="John Doe" id="estName"></div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="john@example.com" id="estEmail"></div>
+<div class="form-group"><label>Brief Description</label><textarea rows="3" placeholder="Describe your project in 2-3 sentences..." id="estDesc"></textarea></div>
+<div style="display:flex;gap:12px;margin-top:8px">
+<button class="btn btn-outline" onclick="nextPanel(2)">? Back</button>
+<button class="btn btn-primary" onclick="generateProposal()"><i class="fa-solid fa-file-pdf"></i> Generate Proposal</button>
+</div>
+</div>
+</div>
+<div>
+<div class="result-card">
+<h3>?? Your Estimate</h3>
+<div class="result-section">
+<div class="result-label">Estimated Cost</div>
+<div class="result-value" id="estCost">?8,999</div>
+</div>
+<div class="result-section">
+<div class="result-label">Estimated Timeline</div>
+<div class="result-value" style="font-size:1.5rem" id="estTime">5 days</div>
+</div>
+<div class="complexity-bar">
+<div class="result-label">Project Complexity</div>
+<div class="complexity-track"><div class="complexity-fill" id="complexFill" style="width:20%"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--text3);margin-top:6px"><span>Simple</span><span>Complex</span></div>
+</div>
+<div class="result-breakdown" id="breakdown">
+<div class="breakdown-item"><span class="key">Base price</span><span class="val" id="bBase">?8,999</span></div>
+<div class="breakdown-item"><span class="key">Features</span><span class="val" id="bFeats">?0</span></div>
+<div class="breakdown-item"><span class="key">Timeline adj.</span><span class="val" id="bTime">?0</span></div>
+</div>
+<div style="height:1px;background:var(--border);margin:20px 0"></div>
+<p style="font-size:.8rem;color:var(--text3);margin-bottom:16px">This is an estimate. Final price depends on full requirements.</p>
+<a href="booking.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px"><i class="fa-solid fa-calendar"></i> Book Free Call</a>
+<a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">Send Requirements</a>
+</div>
+</div>
+</div></div></section>
+<footer><div class="container"><div class="footer-inner"><a href="index.html" class="nav-logo">Dev<span class="grad-text">.</span></a><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="estimator.html">Estimator</a><a href="booking.html">Book</a><a href="contact.html">Contact</a></div></div><div class="footer-copy">© 2026 ND.Lokesh</div></div></footer>
+<button class="whatsapp-fab" onclick="window.open('https://wa.me/919999999999','_blank')">??</button>
+<script src="app.js"></script>
+<script>
+let base=8999,feats=0,tlMult=1,tlLabel='5 days',tlDays=5;
+const tlLabels=['Rush (3-5 days)','Standard (1-2 weeks)','Relaxed (2-3 weeks)','Flexible (3-4 weeks)'];
+const tlMults=[1.5,1,0.9,0.85];
+const tlBaseDays=[5,10,14,21];
+function fmt(n){return'?'+n.toLocaleString('en-IN');}
+function update(){
+  const total=Math.round((base+feats)*tlMult);
+  document.getElementById('estCost').textContent=fmt(total);
+  document.getElementById('estTime').textContent=tlDays+' days';
+  document.getElementById('bBase').textContent=fmt(base);
+  document.getElementById('bFeats').textContent=fmt(feats);
+  const tadj=Math.round((base+feats)*(tlMult-1));
+  document.getElementById('bTime').textContent=(tadj>=0?'+':'')+fmt(tadj);
+  const complexity=Math.min(100,Math.round((feats/50000)*80+20));
+  document.getElementById('complexFill').style.width=complexity+'%';
+}
+function selectType(el,price,time){
+  document.querySelectorAll('.option-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  base=price; tlDays=parseInt(time); update();
+}
+function toggleFeature(el,price){
+  el.classList.toggle('checked');
+  feats+=el.classList.contains('checked')?price:-price;
+  update();
+}
+function updateTimeline(v){
+  const i=parseInt(v)-1;
+  tlMult=tlMults[i]; tlDays=tlBaseDays[i];
+  document.getElementById('tlVal').textContent=tlLabels[i];
+  update();
+}
+function nextPanel(n){
+  document.querySelectorAll('.estimator-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel'+n).classList.add('active');
+  [0,1,2,3].forEach(i=>{
+    document.getElementById('si'+i).classList.toggle('active',i<=n);
+    if(i<3)document.getElementById('sl'+i).classList.toggle('done',i<n);
+  });
+}
+function generateProposal(){
+  const n=document.getElementById('estName').value;
+  const e=document.getElementById('estEmail').value;
+  if(!n||!e){alert('Please fill your name and email.');return;}
+  const total=Math.round((base+feats)*tlMult);
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><title>Proposal for ${n}</title><style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;padding:20px;color:#0f172a}h1{color:#7c3aed}table{width:100%;border-collapse:collapse;margin:20px 0}td,th{padding:12px;border:1px solid #e2e8f0;text-align:left}th{background:#f8fafc}tfoot td{font-weight:bold;background:#f1f5f9}.btn{background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;margin-top:20px;display:block;width:100%}</style></head><body>
+  <h1>Project Proposal</h1><p><strong>Prepared for:</strong> ${n}</p><p><strong>Email:</strong> ${e}</p><p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+  <h2>Estimate Breakdown</h2>
+  <table><thead><tr><th>Item</th><th>Cost</th></tr></thead><tbody>
+  <tr><td>Base Project</td><td>${fmt(base)}</td></tr>
+  <tr><td>Additional Features</td><td>${fmt(feats)}</td></tr>
+  <tr><td>Timeline Adjustment</td><td>${fmt(Math.round((base+feats)*(tlMult-1)))}</td></tr>
+  </tbody><tfoot><tr><td>Total Estimate</td><td>${fmt(total)}</td></tr></tfoot></table>
+  <p><strong>Estimated Timeline:</strong> ${tlDays} days</p>
+  <p><em>This is a preliminary estimate. Final pricing will be confirmed after a detailed requirements call.</em></p>
+  <button class="btn" onclick="window.print()">?? Download / Print PDF</button>
+  </body></html>`);
+}
+update();
+</script>
+</body></html>
