@@ -24,9 +24,9 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#050B14',
-                            blue: '#FF2A6D',
-                            purple: '#FFC600'
+                            dark: '#EFF6FF',
+                            blue: '#1D4ED8',
+                            purple: '#2563EB'
                         }
                     },
                     fontFamily: {
@@ -41,7 +41,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden">
+<body class="bg-white text-blue-900 font-sans antialiased overflow-x-hidden">
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-brand-dark/80 border-b border-brand-blue/20" id="navbar">
@@ -102,11 +102,8 @@
                 Elevating startup and student ideas with zero-gravity aesthetics and scalable web solutions. Based in Hyderabad, building for the future.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#contact" class="px-8 py-4 rounded-full bg-brand-blue text-brand-dark font-display font-bold hover:bg-white hover:text-brand-dark transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,42,109,0.8)] glow-button transform hover:-translate-y-1">
+                <a href="#contact" class="px-8 py-4 rounded-full bg-brand-blue text-brand-dark font-display font-bold hover:bg-white hover:text-brand-dark transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.8)] glow-button transform hover:-translate-y-1">
                     Get a Free Quote <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
-                <a href="#portfolio" class="px-8 py-4 rounded-full border border-brand-purple text-white font-display font-bold hover:bg-brand-purple/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,198,0,0.5)] transform hover:-translate-y-1 backdrop-blur-sm">
-                    View Portfolio
                 </a>
             </div>
         </div>
@@ -194,84 +191,332 @@
         </div>
     </section>
 
-    <!-- Portfolio Showcase Section -->
-    <section id="portfolio" class="py-24 relative overflow-hidden">
-        <!-- Floating decor -->
-        <div class="absolute top-40 right-10 w-32 h-32 bg-brand-blue/10 rounded-full blur-[50px] orbit-anim"></div>
-        <div class="absolute bottom-40 left-10 w-40 h-40 bg-brand-purple/10 rounded-full blur-[60px] orbit-anim-reverse"></div>
-        
+    <!-- ══════════════════════════════════════════
+         3D PORTFOLIO FRAMES SECTION
+    ══════════════════════════════════════════ -->
+    <section id="portfolio" class="py-28 relative overflow-hidden" style="background: linear-gradient(180deg, #ffffff 0%, #eff6ff 50%, #ffffff 100%);">
+
+        <!-- Background glow orbs -->
+        <div class="absolute top-1/4 left-0 w-80 h-80 rounded-full pointer-events-none" style="background:rgba(29,78,216,0.06);filter:blur(100px);"></div>
+        <div class="absolute bottom-1/4 right-0 w-80 h-80 rounded-full pointer-events-none" style="background:rgba(37,99,235,0.06);filter:blur(100px);"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal-up">
-                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">Project <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">Showcase</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Explore our orbit of deployed applications and prototypes. Crafted with modern stacks.</p>
+
+            <!-- Header -->
+            <div class="text-center mb-20 reveal-up">
+                <div class="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-display tracking-widest uppercase" style="background:rgba(29,78,216,0.08);border:1px solid rgba(29,78,216,0.2);color:#1D4ED8;">
+                    <span class="w-2 h-2 rounded-full animate-pulse inline-block" style="background:#1D4ED8;"></span>
+                    Our Work
+                </div>
+                <h2 class="text-4xl md:text-5xl font-display font-black mb-4" style="color:#1e3a8a;">
+                    Projects in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Orbit</span>
+                </h2>
+                <p class="text-blue-400 max-w-xl mx-auto font-light">A showcase of digital experiences we've launched — each one crafted with precision, passion, and zero-gravity aesthetics.</p>
             </div>
-            
-            <!-- Masonry Grid -->
-            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-                <!-- Portfolio Itm 1 -->
-                <div class="portfolio-item group relative rounded-xl overflow-hidden cursor-pointer transform transition duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,42,109,0.3)] reveal-up break-inside-avoid">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Banking Dashboard" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-                        <span class="text-xs font-display font-bold text-brand-blue uppercase tracking-wider">React & Node.js</span>
-                        <h4 class="text-xl font-bold mt-2 text-white">Fintech Banking App Dashboard</h4>
+
+            <!-- 3D Frame Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Frame 1 — Portfolio Site -->
+                <div class="frame-3d reveal-up" style="transition-delay:0ms;" id="frame-1">
+                    <div class="frame-browser">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                            <div class="browser-url">my-portfolio-blue-delta-26.vercel.app</div>
+                        </div>
+                        <div class="browser-screen" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 40%,#1D4ED8 100%);">
+                            <div class="screen-content">
+                                <div class="screen-icon">👨‍💻</div>
+                                <div class="screen-title">ND.Lokesh Portfolio</div>
+                                <div class="screen-tags"><span class="stag">React</span><span class="stag">Next.js</span><span class="stag">GSAP</span></div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="frame-info">
+                        <h3>Developer Portfolio</h3>
+                        <p>Personal portfolio for the founder — animated, responsive, and built with Next.js.</p>
+                        <a href="https://my-portfolio-blue-delta-26.vercel.app" target="_blank" class="frame-link">View Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="frame-shadow"></div>
                 </div>
 
-                <!-- Portfolio Itm 2 -->
-                <div class="portfolio-item group relative rounded-xl overflow-hidden cursor-pointer transform transition duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,198,0,0.3)] reveal-up break-inside-avoid">
-                    <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=800&auto=format&fit=crop" alt="Campus OLX" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-                        <span class="text-xs font-display font-bold text-brand-purple uppercase tracking-wider">MERN Stack</span>
-                        <h4 class="text-xl font-bold mt-2 text-white">Campus Marketplace (OLX Clone)</h4>
+                <!-- Frame 2 — Co-Founder Portfolio -->
+                <div class="frame-3d reveal-up" style="transition-delay:120ms;" id="frame-2">
+                    <div class="frame-browser">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                            <div class="browser-url">siri-portfolio-one.vercel.app</div>
+                        </div>
+                        <div class="browser-screen" style="background:linear-gradient(135deg,#0c0c1d 0%,#1a1040 40%,#2563EB 100%);">
+                            <div class="screen-content">
+                                <div class="screen-icon">🎨</div>
+                                <div class="screen-title">N.Sri Siri Portfolio</div>
+                                <div class="screen-tags"><span class="stag">HTML</span><span class="stag">CSS</span><span class="stag">JS</span></div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="frame-info">
+                        <h3>Creative Portfolio</h3>
+                        <p>Co-founder's portfolio showcasing design sensibility and project management expertise.</p>
+                        <a href="https://siri-portfolio-one.vercel.app" target="_blank" class="frame-link">View Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="frame-shadow"></div>
                 </div>
 
-                <!-- Portfolio Itm 3 -->
-                <div class="portfolio-item group relative rounded-xl overflow-hidden cursor-pointer transform transition duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,42,109,0.3)] reveal-up break-inside-avoid">
-                    <div class="bg-gray-800 w-full h-64 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-50 parallax-bg"></div>
-                        <i class="fa-solid fa-mobile-screen-button text-6xl text-brand-blue/50"></i>
+                <!-- Frame 3 — Student Project -->
+                <div class="frame-3d reveal-up" style="transition-delay:240ms;" id="frame-3">
+                    <div class="frame-browser">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                            <div class="browser-url">uni-project-studio.vercel.app</div>
+                        </div>
+                        <div class="browser-screen" style="background:linear-gradient(135deg,#062244 0%,#0a3270 40%,#1756c8 100%);">
+                            <div class="screen-content">
+                                <div class="screen-icon">🚀</div>
+                                <div class="screen-title">Uni Project Studio</div>
+                                <div class="screen-tags"><span class="stag">Tailwind</span><span class="stag">Three.js</span><span class="stag">GSAP</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-                        <span class="text-xs font-display font-bold text-brand-blue uppercase tracking-wider">Flutter / Firebase</span>
-                        <h4 class="text-xl font-bold mt-2 text-white">Live Wallpaper Generator</h4>
+                    <div class="frame-info">
+                        <h3>Studio Website</h3>
+                        <p>This very site — a 3D-animated, space-themed studio platform built for impact.</p>
+                        <a href="#home" class="frame-link">You're Here <i class="fa-solid fa-location-dot"></i></a>
                     </div>
-                </div>
-                
-                <!-- Portfolio Itm 4 -->
-                 <div class="portfolio-item group relative rounded-xl overflow-hidden cursor-pointer transform transition duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,198,0,0.3)] reveal-up break-inside-avoid">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" alt="Student Portfolio" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-                        <span class="text-xs font-display font-bold text-brand-purple uppercase tracking-wider">HTML/CSS/JS</span>
-                        <h4 class="text-xl font-bold mt-2 text-white">Interactive Developer Portfolio</h4>
-                    </div>
+                    <div class="frame-shadow"></div>
                 </div>
 
-                <!-- Portfolio Itm 5 -->
-                 <div class="portfolio-item group relative rounded-xl overflow-hidden cursor-pointer transform transition duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,42,109,0.3)] reveal-up break-inside-avoid">
-                    <img src="https://images.unsplash.com/photo-1542744094-24638ea0b3b5?q=80&w=800&auto=format&fit=crop" alt="E-Commerce" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-                        <span class="text-xs font-display font-bold text-brand-blue uppercase tracking-wider">Next.js & Stripe</span>
-                        <h4 class="text-xl font-bold mt-2 text-white">Corporate E-Commerce Portal</h4>
+                <!-- Frame 4 — E-Commerce -->
+                <div class="frame-3d reveal-up" style="transition-delay:360ms;" id="frame-4">
+                    <div class="frame-browser">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                            <div class="browser-url">client-ecommerce.vercel.app</div>
+                        </div>
+                        <div class="browser-screen" style="background:linear-gradient(135deg,#0a0a14 0%,#0d2260 50%,#1D4ED8 100%);">
+                            <div class="screen-content">
+                                <div class="screen-icon">🛒</div>
+                                <div class="screen-title">E-Commerce Platform</div>
+                                <div class="screen-tags"><span class="stag">Node.js</span><span class="stag">MongoDB</span><span class="stag">React</span></div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="frame-info">
+                        <h3>Full-Stack E-Commerce</h3>
+                        <p>A complete online store with cart, payments, and admin dashboard for a Hyderabad startup.</p>
+                        <a href="#contact" class="frame-link">Get Similar <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="frame-shadow"></div>
                 </div>
-            </div>
-            
-            <div class="text-center mt-12 reveal-up">
-                <a href="#contact" class="inline-flex items-center px-6 py-3 rounded-full border border-gray-600 hover:border-brand-blue text-white hover:text-brand-blue transition-colors">
-                    View More on GitHub <i class="fa-brands fa-github ml-2"></i>
+
+                <!-- Frame 5 — Major Student Project -->
+                <div class="frame-3d reveal-up" style="transition-delay:480ms;" id="frame-5">
+                    <div class="frame-browser">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                            <div class="browser-url">hospital-mgmt.vercel.app</div>
+                        </div>
+                        <div class="browser-screen" style="background:linear-gradient(135deg,#031027 0%,#082050 50%,#0f3490 100%);">
+                            <div class="screen-content">
+                                <div class="screen-icon">🏥</div>
+                                <div class="screen-title">Hospital Management</div>
+                                <div class="screen-tags"><span class="stag">PHP</span><span class="stag">MySQL</span><span class="stag">Bootstrap</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="frame-info">
+                        <h3>Major Academic Project</h3>
+                        <p>A full hospital management system with patient records, doctor scheduling & billing.</p>
+                        <a href="#contact" class="frame-link">Get Similar <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="frame-shadow"></div>
+                </div>
+
+                <!-- Frame 6 — AI Integration -->
+                <div class="frame-3d reveal-up" style="transition-delay:600ms;" id="frame-6">
+                    <div class="frame-browser">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                            <div class="browser-url">ai-chatbot-project.vercel.app</div>
+                        </div>
+                        <div class="browser-screen" style="background:linear-gradient(135deg,#020818 0%,#071540 50%,#1034a6 100%);">
+                            <div class="screen-content">
+                                <div class="screen-icon">🤖</div>
+                                <div class="screen-title">AI Chatbot App</div>
+                                <div class="screen-tags"><span class="stag">OpenAI</span><span class="stag">Node.js</span><span class="stag">React</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="frame-info">
+                        <h3>AI Integration Project</h3>
+                        <p>Custom AI-powered chatbot with GPT integration, built for a student's final-year submission.</p>
+                        <a href="#contact" class="frame-link">Get Similar <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="frame-shadow"></div>
+                </div>
+
+            </div><!-- /grid -->
+
+            <!-- CTA row -->
+            <div class="text-center mt-16 reveal-up">
+                <a href="#contact" class="inline-flex items-center gap-3 px-10 py-4 rounded-full font-display font-bold text-white text-sm tracking-wider transition-all duration-300 hover:-translate-y-1" style="background:linear-gradient(90deg,#1D4ED8,#2563EB);box-shadow:0 0 30px rgba(29,78,216,0.35);">
+                    Launch Your Project <i class="fa-solid fa-rocket"></i>
                 </a>
             </div>
+
         </div>
     </section>
 
+    <!-- 3D Frames CSS + JS -->
+    <style>
+        /* ── Frame 3D wrapper ── */
+        .frame-3d {
+            position: relative;
+            perspective: 1000px;
+            padding-bottom: 20px;
+            cursor: pointer;
+        }
+        .frame-browser {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(29,78,216,0.25);
+            box-shadow: 0 20px 60px rgba(29,78,216,0.15), 0 0 0 1px rgba(29,78,216,0.08);
+            transform: perspective(900px) rotateX(2deg) rotateY(0deg);
+            transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), box-shadow 0.6s ease;
+            will-change: transform;
+            background: #0a1628;
+            animation: frame-float var(--fd, 5s) ease-in-out infinite;
+        }
+        #frame-1 .frame-browser { --fd: 5.0s; }
+        #frame-2 .frame-browser { --fd: 5.6s; }
+        #frame-3 .frame-browser { --fd: 6.2s; }
+        #frame-4 .frame-browser { --fd: 5.3s; }
+        #frame-5 .frame-browser { --fd: 6.8s; }
+        #frame-6 .frame-browser { --fd: 5.9s; }
+        @keyframes frame-float {
+            0%,100% { transform: perspective(900px) rotateX(2deg) rotateY(0deg) translateY(0); }
+            50%      { transform: perspective(900px) rotateX(2deg) rotateY(0deg) translateY(-10px); }
+        }
+        .frame-3d:hover .frame-browser {
+            animation: none;
+            transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(-14px) scale(1.03);
+            box-shadow: 0 35px 80px rgba(29,78,216,0.35), 0 0 0 2px rgba(29,78,216,0.5), 0 0 40px rgba(29,78,216,0.2);
+        }
+
+        /* ── Browser chrome bar ── */
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            background: #111827;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .dot-red    { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green  { background: #28c840; }
+        .browser-url {
+            flex: 1;
+            margin-left: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.65rem;
+            color: #6b7280;
+            font-family: 'Inter', monospace;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ── Browser screen ── */
+        .browser-screen {
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .browser-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20h40M20 0v40' stroke='rgba(255,255,255,0.03)' fill='none'/%3E%3C/svg%3E");
+        }
+        .screen-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .screen-icon { font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)); }
+        .screen-title { color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 12px; text-shadow: 0 0 20px rgba(99,179,255,0.6); }
+        .screen-tags { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+        .stag { font-size: 0.62rem; padding: 2px 8px; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #93c5fd; font-weight: 600; }
+
+        /* ── Frame info below ── */
+        .frame-info {
+            padding: 16px 4px 0;
+            transition: transform 0.5s ease;
+        }
+        .frame-3d:hover .frame-info { transform: translateY(-4px); }
+        .frame-info h3 { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1e3a8a; margin-bottom: 6px; }
+        .frame-info p  { font-size: 0.82rem; color: #3b82f6; line-height: 1.6; margin-bottom: 10px; }
+        .frame-link {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #1D4ED8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s ease, color 0.3s;
+        }
+        .frame-link:hover { gap: 10px; color: #2563EB; }
+
+        /* ── Floating shadow ── */
+        .frame-shadow {
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(29,78,216,0.25);
+            filter: blur(14px);
+            transition: all 0.6s ease;
+        }
+        .frame-3d:hover .frame-shadow {
+            width: 60%;
+            left: 20%;
+            opacity: 0.4;
+            filter: blur(22px);
+        }
+    </style>
+    <script>
+        // 3D mouse tilt on each frame
+        document.querySelectorAll('.frame-3d').forEach(frame => {
+            const browser = frame.querySelector('.frame-browser');
+            frame.addEventListener('mousemove', e => {
+                const rect = frame.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top)  / rect.height - 0.5;
+                browser.style.animation = 'none';
+                browser.style.transform = `perspective(900px) rotateX(${-y * 12}deg) rotateY(${x * 14}deg) translateY(-14px) scale(1.03)`;
+            });
+            frame.addEventListener('mouseleave', () => {
+                browser.style.transform = '';
+                // Re-apply float animation
+                browser.style.animation = '';
+            });
+        });
+    </script>
+
     <!-- About Section -->
-    <section id="about" class="py-24 relative bg-gradient-to-b from-brand-dark to-[#0f0f13] border-t border-white/5">
+    <section id="about" class="py-24 relative bg-gradient-to-b from-white to-blue-50 border-t border-blue-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2 relative reveal-up">
@@ -318,7 +563,7 @@
                                     <i class="fa-solid fa-user-astronaut"></i>
                                 </div>
                                 <div>
-                                    <div class="text-lg font-display font-bold text-white">ND.Lokesh</div>
+                                    <a href="https://my-portfolio-blue-delta-26.vercel.app" target="_blank" class="text-lg font-display font-bold text-white hover:text-brand-blue transition-colors">ND.Lokesh</a>
                                     <div class="text-xs text-brand-blue uppercase tracking-wider mt-1">Founder</div>
                                 </div>
                             </div>
@@ -327,7 +572,7 @@
                                     <i class="fa-solid fa-user-astronaut"></i>
                                 </div>
                                 <div>
-                                    <div class="text-lg font-display font-bold text-white">N.Sri Siri</div>
+                                    <a href="https://siri-portfolio-one.vercel.app" target="_blank" class="text-lg font-display font-bold text-white hover:text-brand-purple transition-colors">N.Sri Siri</a>
                                     <div class="text-xs text-brand-purple uppercase tracking-wider mt-1">Co-Founder</div>
                                 </div>
                             </div>
@@ -339,7 +584,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24 relative overflow-hidden bg-brand-dark">
+    <section id="testimonials" class="py-24 relative overflow-hidden bg-blue-50">
         <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-brand-blue to-transparent opacity-20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
@@ -430,7 +675,7 @@
                             <label for="projectType" class="text-xs font-display text-gray-400 uppercase tracking-wider pl-1 flex justify-between">
                                 <span>Project Type</span>
                             </label>
-                            <select id="projectType" name="projectType" class="w-full bg-[#131313] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none cursor-pointer">
+                            <select id="projectType" name="projectType" class="w-full bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-blue-900 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none cursor-pointer">
                                 <option value="150">Mini Student Project (₹)</option>
                                 <option value="300">Personal Portfolio (₹₹)</option>
                                 <option value="400">Major Student Project (₹₹)</option>
@@ -488,7 +733,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#050505] border-t border-white/5 pt-16 pb-8">
+    <footer class="bg-blue-50 border-t border-blue-100 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
                 <!-- Brand -->
@@ -505,11 +750,10 @@
                     <div class="flex flex-col gap-2">
                         <a href="#home" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">Home</a>
                         <a href="#services" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">Services</a>
-                        <a href="team.html" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">Our Team</a>
+                        <a href="#about" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">About Us</a>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a href="#portfolio" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">Portfolio</a>
-                        <a href="#about" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">About Us</a>
+                        <a href="team.html" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">Our Team</a>
                         <a href="#contact" class="text-gray-400 hover:text-brand-blue text-sm transition-colors">Contact</a>
                     </div>
                 </div>
@@ -533,7 +777,7 @@
                 </div>
             </div>
             
-            <div class="mt-16 pt-8 border-t border-white/5 text-center text-gray-600 text-xs">
+            <div class="mt-16 pt-8 border-t border-blue-100 text-center text-blue-400 text-xs">
                 &copy; 2026 Uni Project Studio. All rights reserved. Launching Ideas into Orbit.
             </div>
         </div>
