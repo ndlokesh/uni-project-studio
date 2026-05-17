@@ -221,6 +221,27 @@ function handleFormSubmit(e) {
         body: new URLSearchParams(formData)
     })
         .then(response => {
+            // --- TELEGRAM NOTIFICATION START ---
+            // 1. To get your Bot Token: Search for "@BotFather" in Telegram, send /newbot, and follow the steps.
+            // 2. To get your Chat ID: Search for "@userinfobot" in Telegram and send it a message.
+            const telegramBotToken = 'YOUR_TELEGRAM_BOT_TOKEN'; 
+            const telegramChatId = 'YOUR_TELEGRAM_CHAT_ID'; 
+            
+            if (telegramBotToken !== 'YOUR_TELEGRAM_BOT_TOKEN') {
+                const message = `🚀 *New Project Inquiry!*\n\n*Name:* ${formData.get('name')}\n*Email:* ${formData.get('email')}\n*Est. Budget:* ₹${formData.get('estimatedPrice')}\n*Details:* ${formData.get('message')}`;
+                
+                fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: telegramChatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                }).catch(err => console.error("Telegram error:", err));
+            }
+            // --- TELEGRAM NOTIFICATION END ---
+
             // Show success overlay rocket animation
             overlay.classList.remove('opacity-0', 'pointer-events-none');
             overlay.classList.add('opacity-100');
